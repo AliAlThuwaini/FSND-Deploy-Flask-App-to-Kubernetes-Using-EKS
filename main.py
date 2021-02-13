@@ -78,8 +78,13 @@ def auth():
     body = {'email': email, 'password': password}
 
     user_data = body
+    #print ('user data: ', user_data)
 
-    return jsonify(token=_get_jwt(user_data).decode('utf-8'))
+    #return jsonify(token=_get_jwt(user_data).decode('utf-8')) #Ali: removed .decode due to this received error: 
+    #return jsonify(token=_get_jwt(user_data).decode('utf-8'))
+    #AttributeError: 'str' object has no attribute 'decode'
+
+    return jsonify(token=_get_jwt(user_data))
 
 
 @APP.route('/contents', methods=['GET'])
